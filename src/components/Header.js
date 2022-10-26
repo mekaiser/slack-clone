@@ -19,7 +19,7 @@ function Header() {
       {/* Header Search */}
       <HeaderSearch>
         <SearchIcon />
-        <input search="Search Papafam" />
+        <input placeholder="Search PAPAFAM" />
       </HeaderSearch>
 
       <HeaderRight>
