@@ -4,7 +4,6 @@ import {
   getFirestore
 } from "firebase/firestore";
 
-import { addDoc, collection, query } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -27,5 +26,5 @@ const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
 
-export { auth, provider, db, collection, addDoc, query };
+export { auth, provider, db };
 

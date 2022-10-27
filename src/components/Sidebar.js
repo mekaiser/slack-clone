@@ -12,10 +12,11 @@ import {
   InsertCommentRounded,
   PeopleAlt
 } from "@material-ui/icons";
+import { collection, query } from "firebase/firestore";
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import styled from "styled-components";
-import { collection, db, query } from "../firebase";
+import { db } from "../firebase";
 import SidebarOption from "./SidebarOption";
 
 function Sidebar() {
