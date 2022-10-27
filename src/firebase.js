@@ -4,8 +4,6 @@ import {
   getFirestore
 } from "firebase/firestore";
 
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyBy5gnT_tqfhdYq4U7qjTuwBGG_H-zKmn4",
   authDomain: "slack-clone-2k22.firebaseapp.com",

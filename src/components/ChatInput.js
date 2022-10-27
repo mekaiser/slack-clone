@@ -6,10 +6,10 @@ import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../firebase";
 
-function ChatInput({ channelName, channelId }) {
-  const [input, setInput] = useState('');
+function ChatInput({ chatRef, channelName, channelId }) {
+  const [input, setInput] = useState("");
+
   const sendMessage = async (e) => {
-    console.log('hello there', channelId)
     e.preventDefault(); // prevent refresh
 
     if (!channelId) {
@@ -21,16 +21,25 @@ function ChatInput({ channelName, channelId }) {
     await addDoc(collection(docRef, "messages"), {
       message: input,
       timestamp: serverTimestamp(),
-      user: 'Sonny Sangha',
-      userImage: 'https://www.kaiserahmed.net/_next/image?url=%2Fassets%2Fabout%2Fcompressed%2Fkaiser-photo-min.png&w=1080&q=75'
+      user: "Sonny Sangha",
+      userImage:
+        "https://www.kaiserahmed.net/_next/image?url=%2Fassets%2Fabout%2Fcompressed%2Fkaiser-photo-min.png&w=1080&q=75",
     });
 
-    setInput('')
+    chatRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setInput("");
   };
   return (
     <ChatInputContainer>
       <form>
-        <input value={input} onChange={e => setInput(e.target.value)} placeholder={`Message #ROOM`} />
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder={`Message #${channelName}`}
+        />
         <Button hidden type="submit" onClick={sendMessage}>
           SEND
         </Button>
