@@ -9,7 +9,7 @@ import { auth, db } from "../firebase";
 
 function ChatInput({ chatRef, channelName, channelId }) {
   const [input, setInput] = useState("");
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const sendMessage = async (e) => {
     e.preventDefault(); // prevent refresh

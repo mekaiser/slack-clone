@@ -14,23 +14,25 @@ import {
 } from "@material-ui/icons";
 import { collection, query } from "firebase/firestore";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import styled from "styled-components";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import SidebarOption from "./SidebarOption";
 
 function Sidebar({isDrawerOpen}) {
-  const [channels, loading, error] = useCollection(
+  const [channels] = useCollection(
     query(collection(db, "rooms"))
   );
+  const [user] = useAuthState(auth)
   return (
     <SidebarContainer $isDrawerOpen={isDrawerOpen}>
       <SidebarHeader>
         <SidebarInfo>
-          <h2>PAPA FAM HQ</h2>
+          <h2>BLADE HQ</h2>
           <h3>
             <FiberManualRecord />
-            Sonny Sangha
+            {user.displayName}
           </h3>
         </SidebarInfo>
         <Create />

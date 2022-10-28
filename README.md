@@ -2,29 +2,20 @@
 
 ![SLACK-CLONE](https://raw.githubusercontent.com/mekaiser/enfix-client/main/src/images/enfix.png)
 
-SLACK CLONE is a dynamic electronics repair website where users can order a service after logging in and completing the online payment process.
+A single-page web application-based messaging app. Conversations of users are organized into dedicated channels.
 
 ## FEATURES
 
-- Dynamic services section and testimonials section.
+- Users can chat with other users via dedicated channels.
 - One-click login with google.
-- Users can book services, monitor their booklist and the status of their book.
-- Users can write a review about the services.
-- Admin can add services, update and delete services.
-- Admin can view all ordered services by the users and update their status.
-- Admin can add new admin.
-- Firebase Authentication & hosting, Stripe payment gateway system.
+- Firebase Authentication & hosting.
 
 ## KEY TECHNOLOGY
 
 - React
-- React Bootstrap
+- Redux
+- Material UI
+- Styled Components
 - Firebase
-- ExpressJS
-- MongoDB
-- Bootstrap5
-- Stripe
 
-### `LIVE SITE:` [ENFIX](https://enfix-web.web.app/)
-
-**_Server Repository:_** **_[ENFIX SERVER](https://github.com/mekaiser/enfix-server)_**
+### `LIVE SITE:` [ENFIX](https://slack-clone-2k22.web.app/)

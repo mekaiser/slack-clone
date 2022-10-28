@@ -10,6 +10,7 @@ import { auth } from "../firebase";
 
 function Header({ drawerOpenHandler }) {
   const [user] = useAuthState(auth);
+  
   return (
     <HeaderContainer>
       {/* Header Left */}
