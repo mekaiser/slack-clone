@@ -1,13 +1,14 @@
 import { Avatar } from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import { auth } from "../firebase";
 
-function Header() {
+function Header({ drawerOpenHandler }) {
   const [user] = useAuthState(auth);
   return (
     <HeaderContainer>
@@ -23,12 +24,17 @@ function Header() {
 
       {/* Header Search */}
       <HeaderSearch>
-        <SearchIcon />
-        <input placeholder="Search PAPAFAM" />
+        <HeaderInnerSearch>
+          <SearchIcon />
+          <input placeholder="Search PAPAFAM" />
+        </HeaderInnerSearch>
       </HeaderSearch>
 
       <HeaderRight>
-        <HelpOutlineIcon />
+        <HeaderInnerRight>
+          <HelpOutlineIcon />
+          <MenuIcon onClick={drawerOpenHandler} />
+        </HeaderInnerRight>
       </HeaderRight>
 
       {/* Header Right */}
@@ -39,22 +45,35 @@ function Header() {
 export default Header;
 
 const HeaderSearch = styled.div`
-  flex: 0.4;
-  opacity: 1;
+  width: 40%;
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+`;
+
+const HeaderInnerSearch = styled.div`
+  margin: 0 auto;
+  max-width: 30rem;
   border-radius: 6px;
   background-color: #421f44;
   text-align: center;
   display: flex;
-  padding: 0 50px;
+  padding: 3px 20px;
   color: gray;
   border: 1px gray solid;
+  @media (max-width: 768px) {
+    padding: 3px 10px;
+  }
 
   > input {
+    color: white;
     background-color: transparent;
     border: none;
     text-align: center;
-    min-width: 30vw;
+    width: 100%;
     outline: 0;
+    @media (max-width: 768px) {
+    }
   }
 `;
 
@@ -70,25 +89,47 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderLeft = styled.div`
-  flex: 0.3;
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  width: 30%;
+  padding-left: 20px;
+  @media (max-width: 768px) {
+    width: 20%;
+  }
 
   > .MuiSvgIcon-root {
     margin-left: auto;
     margin-right: 30px;
+    @media (max-width: 768px) {
+      margin-right: 2px;
+    }
   }
 `;
 
 const HeaderRight = styled.div`
-  flex: 0.3;
+  width: 30%;
   display: flex;
   align-items: flex-end;
+  @media (max-width: 768px) {
+    width: 20%;
+  }
+`;
 
-  > .MuiSvgIcon-root {
-    margin-left: auto;
-    margin-right: 20px;
+const HeaderInnerRight = styled.div`
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: 20px;
+  gap: 14px;
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
+
+  > .MuiSvgIcon-root:nth-last-child(1) {
+    display: none;
+    cursor: pointer;
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 `;
 

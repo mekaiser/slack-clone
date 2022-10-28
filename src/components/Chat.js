@@ -89,7 +89,9 @@ const Header = styled.div`
   border-bottom: 1px solid lightgray;
 `;
 
-const ChatMessages = styled.div``;
+const ChatMessages = styled.div`
+  padding-left: 10px;
+`;
 
 const HeaderLeft = styled.div`
   display: flex;
@@ -121,6 +123,6 @@ const HeaderRight = styled.div`
 const ChatContainer = styled.div`
   flex: 0.7;
   flex-grow: 1;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-top: 60px;
 `;

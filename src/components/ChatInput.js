@@ -4,10 +4,12 @@ import styled from "styled-components";
 
 import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
-import { db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../firebase";
 
 function ChatInput({ chatRef, channelName, channelId }) {
   const [input, setInput] = useState("");
+  const [user, loading] = useAuthState(auth);
 
   const sendMessage = async (e) => {
     e.preventDefault(); // prevent refresh
@@ -21,9 +23,8 @@ function ChatInput({ chatRef, channelName, channelId }) {
     await addDoc(collection(docRef, "messages"), {
       message: input,
       timestamp: serverTimestamp(),
-      user: "Sonny Sangha",
-      userImage:
-        "https://www.kaiserahmed.net/_next/image?url=%2Fassets%2Fabout%2Fcompressed%2Fkaiser-photo-min.png&w=1080&q=75",
+      user: user.displayName,
+      userImage: user.photoURL,
     });
 
     chatRef.current.scrollIntoView({
@@ -64,8 +65,8 @@ const ChatInputContainer = styled.div`
     bottom: 30px;
     width: 60%;
     border: 1px solid gray;
-    border-radius: 3px;
-    padding: 20px;
+    border-radius: 6px;
+    padding: 16px;
     outline: none;
   }
 

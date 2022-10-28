@@ -19,12 +19,12 @@ import styled from "styled-components";
 import { db } from "../firebase";
 import SidebarOption from "./SidebarOption";
 
-function Sidebar() {
+function Sidebar({isDrawerOpen}) {
   const [channels, loading, error] = useCollection(
     query(collection(db, "rooms"))
   );
   return (
-    <SidebarContainer>
+    <SidebarContainer $isDrawerOpen={isDrawerOpen}>
       <SidebarHeader>
         <SidebarInfo>
           <h2>PAPA FAM HQ</h2>
@@ -49,11 +49,7 @@ function Sidebar() {
       <hr />
       <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
       {channels?.docs.map((doc) => (
-        <SidebarOption
-          key={doc.id}
-          id={doc.id}
-          title={doc.data().name}
-        />
+        <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
       ))}
     </SidebarContainer>
   );
@@ -68,6 +64,16 @@ const SidebarContainer = styled.div`
   border-top: 1px solid #49274b;
   max-width: 260px;
   margin-top: 60px;
+  
+  @media (max-width: 768px) {
+    width:  400px;
+    position: fixed;
+    left: ${p => p.$isDrawerOpen ? '0' : '-400px' };
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    transition: all 0.5s ease;
+  }
 
   > hr {
     margin-top: 10px;

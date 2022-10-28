@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
@@ -11,6 +11,11 @@ import { auth } from "./firebase";
 
 function App() {
   const [user, loading] = useAuthState(auth);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+
+  const drawerOpenHandler = () => {
+    setDrawerOpen(prev => !prev);
+  };
 
   return (
     <div className="app">
@@ -19,9 +24,9 @@ function App() {
           <Login />
         ) : (
           <>
-            <Header />
+            <Header drawerOpenHandler={drawerOpenHandler} />
             <AppBody>
-              <Sidebar />
+              <Sidebar isDrawerOpen={isDrawerOpen} />
               <Routes>
                 <Route path="/" element={<Chat />}></Route>
               </Routes>
