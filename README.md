@@ -1,6 +1,6 @@
 # SLACK CLONE
 
-![SLACK-CLONE](https://raw.githubusercontent.com/mekaiser/enfix-client/main/src/images/enfix.png)
+![SLACK-CLONE](https://raw.githubusercontent.com/mekaiser/slack-clone/main/src/assets/images/slack-clone.jpg)
 
 A single-page web application-based messaging app. Conversations of users are organized into dedicated channels.
 
