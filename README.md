@@ -18,4 +18,4 @@ A single-page web application-based messaging app. Conversations of users are or
 - Styled Components
 - Firebase
 
-### `LIVE SITE:` [ENFIX](https://slack-clone-2k22.web.app/)
+### `LIVE SITE:` [SLACK-CLONE](https://slack-clone-2k22.web.app/)
